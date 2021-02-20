@@ -11,7 +11,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
+
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 public class DocumentController {
@@ -47,4 +52,11 @@ public class DocumentController {
         }
         return htmlBuilder.toString();
     }
+
+    @GetMapping("parse")
+    @ResponseBody
+    public List<String> parse() throws IOException {
+        return this.documentService.parseSample();
+    }
+
 }
